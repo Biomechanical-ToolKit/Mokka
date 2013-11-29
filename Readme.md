@@ -34,7 +34,7 @@ Want to contribute to the project? It can be to improve the documentation, fix a
 
 1. [Fork][fk] Mokka
 2. Create a topic branch - `git checkout -b my_branch`
-3. Do all your modifications. Commit, commit and commit ([smaller is better](http://www.databasically.com/2011/03/14/git-commit-early-commit-often/).
+3. Do all your modifications. Commit, commit and commit ([smaller is better](http://www.databasically.com/2011/03/14/git-commit-early-commit-often/))
 4. Push to your branch - `git push origin my_branch`
 5. Create a [Pull Request][pr]
 6. That's it!
