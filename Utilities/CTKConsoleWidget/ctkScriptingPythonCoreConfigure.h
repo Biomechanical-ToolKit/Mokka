@@ -1,0 +1,4 @@
+#ifndef __ctkScriptingPythonCoreConfigure_h
+#define __ctkScriptingPythonCoreConfigure_h
+
+#endif
