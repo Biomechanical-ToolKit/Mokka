@@ -49,4 +49,4 @@ public:
   virtual void initialize();
 };
 
-#endif
+#endif // __qMokkaApplication_p_h

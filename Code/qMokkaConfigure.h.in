@@ -33,8 +33,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef mokkaConfigure_h
-#define mokkaConfigure_h
+#ifndef qMokkaConfigure_h
+#define qMokkaConfigure_h
 
 #include <QtCore>
 
@@ -54,4 +54,4 @@
 
 #cmakedefine MOKKA_USE_PYTHON
 
-#endif // mokkaConfigure_h
+#endif // qMokkaConfigure_h

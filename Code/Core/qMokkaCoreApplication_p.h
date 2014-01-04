@@ -59,4 +59,4 @@ protected:
   qMokkaCoreApplication* q_ptr;
 };
 
-#endif
+#endif // __qMokkaCoreApplication_p_h

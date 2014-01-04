@@ -49,5 +49,5 @@ public:
   // ~PythonConsole(); // Implicit.
 };
 
-#endif // __qMokka
+#endif // __qMokkaPythonConsole_h
 

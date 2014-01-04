@@ -119,4 +119,4 @@ private:
   Q_DECLARE_PRIVATE(qMokkaCoreApplication);
 };
 
-#endif
+#endif // __qMokkaCoreApplication_h

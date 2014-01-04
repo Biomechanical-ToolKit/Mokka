@@ -50,4 +50,4 @@ protected:
   virtual void executeInitializationScripts();
 };
 
-#endif
+#endif // __qMokkaPythonManager_h

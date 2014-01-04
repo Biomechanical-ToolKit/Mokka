@@ -55,4 +55,4 @@ private:
   Q_DISABLE_COPY(qMokkaApplication);
 };
 
-#endif
+#endif // __qMokkaApplication_h
