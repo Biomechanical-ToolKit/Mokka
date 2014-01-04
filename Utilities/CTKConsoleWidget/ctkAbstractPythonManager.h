@@ -145,13 +145,13 @@ protected:
 
   void initPythonQt(int flags);
 
-  virtual QStringList     pythonPaths();
+  virtual QStringList pythonPaths();
 
   /// Overload this function to load Decorator and pythonQt wrapper at initialization time
-  virtual void            preInitialization();
+  virtual void preInitialization();
 
   /// Overload this function to execute script at initialization time
-  virtual void            executeInitializationScripts();
+  virtual void executeInitializationScripts();
 
 protected:
   QScopedPointer<ctkAbstractPythonManagerPrivate> d_ptr;

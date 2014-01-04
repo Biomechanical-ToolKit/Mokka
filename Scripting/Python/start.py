@@ -11,6 +11,6 @@ class _Internal():
     import imp
 
     # Set attribute 'mokka.app'
-    setattr( mokka, 'app', _qMokkaCoreApplicationInstance )
+    setattr(mokka, 'app', _qMokkaCoreApplicationInstance)
 
 _internalInstance = _Internal()
