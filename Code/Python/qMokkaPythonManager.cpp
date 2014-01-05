@@ -35,7 +35,6 @@
 
 #include "qMokkaPythonManager.h"
 #include "qMokkaApplication.h"
-#include "qMokkaConfigure.h" // MOKKA_SOURCE_DIR
 
 qMokkaPythonManager::qMokkaPythonManager(QObject* parent)
 : qMokkaCorePythonManager(parent)

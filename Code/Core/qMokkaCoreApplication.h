@@ -36,7 +36,7 @@
 #ifndef __qMokkaCoreApplication_h
 #define __qMokkaCoreApplication_h
 
-#include "qMokkaConfigure.h"
+#include "qMokkaConfigure.h" // MOKKA_USE_PYTHON
 
 #include <QApplication>
 #include <QScopedPointer>
