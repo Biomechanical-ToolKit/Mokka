@@ -42,6 +42,7 @@
 #include <QScopedPointer>
 
 class qMokkaCorePythonManager;
+class qMokkaCoreDataManager;
 
 // class QSettings;
 
@@ -72,6 +73,12 @@ public:
   /// Set the python manager and take ownership of it
   void setPythonManager(qMokkaCorePythonManager* manager);
 #endif
+  
+  /// Get acquisition manager
+  qMokkaCoreDataManager* dataManager() const;
+
+  /// Set the acquisition manager and take ownership of it
+  void setDataManager(qMokkaCoreDataManager* manager);
 
   /// Return the copyrights of Mokka
   virtual QString copyrights() const;

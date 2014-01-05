@@ -36,6 +36,7 @@
 #include "qMokkaApplication.h"
 #include "qMokkaApplication_p.h"
 #include "qMokkaPythonManager.h"
+#include "qMokkaDataManager.h"
 
 // ------------------------------------------------------------------------- //
 //                           qMokkaApplicationPrivate                        //
@@ -52,7 +53,8 @@ qMokkaApplicationPrivate::~qMokkaApplicationPrivate()
 void qMokkaApplicationPrivate::initialize()
 {
   Q_Q(qMokkaApplication);
-  q->setPythonManager(new qMokkaPythonManager());
+  q->setPythonManager(new qMokkaPythonManager);
+  q->setDataManager(new qMokkaDataManager);
   
   this->qMokkaCoreApplicationPrivate::initialize();
 };

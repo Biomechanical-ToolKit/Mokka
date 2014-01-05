@@ -35,11 +35,11 @@
  
 #include "qMokkaCoreApplication.h"
 #include "qMokkaCoreApplication_p.h"
-
 #if defined(MOKKA_USE_PYTHON)
   #include "qMokkaCorePythonManager.h"
   #include <PythonQt.h>
 #endif
+#include "qMokkaCoreDataManager.h"
 
 #include <QProcess>
 
@@ -50,7 +50,6 @@
 qMokkaCoreApplicationPrivate::qMokkaCoreApplicationPrivate(qMokkaCoreApplication* q)
 : q_ptr(q)
 {};
-
 
 qMokkaCoreApplicationPrivate::~qMokkaCoreApplicationPrivate()
 {
@@ -98,6 +97,8 @@ qMokkaCoreApplication::qMokkaCoreApplication(qMokkaCoreApplicationPrivate& dd, i
 qMokkaCoreApplication::~qMokkaCoreApplication()
 {};
 
+// ------------------------------------------------------------------------- //
+
 #if defined(MOKKA_USE_PYTHON)
 qMokkaCorePythonManager* qMokkaCoreApplication::pythonManager() const
 {
@@ -111,6 +112,20 @@ void qMokkaCoreApplication::setPythonManager(qMokkaCorePythonManager* manager)
   d->CorePythonManager = QSharedPointer<qMokkaCorePythonManager>(manager);
 };
 #endif
+
+qMokkaCoreDataManager* qMokkaCoreApplication::dataManager() const
+{
+  Q_D(const qMokkaCoreApplication);
+  return d->CoreDataManager.data();
+};
+
+void qMokkaCoreApplication::setDataManager(qMokkaCoreDataManager* manager)
+{
+  Q_D(qMokkaCoreApplication);
+  d->CoreDataManager = QSharedPointer<qMokkaCoreDataManager>(manager);
+};
+
+// ------------------------------------------------------------------------- //
 
 QString qMokkaCoreApplication::libraries() const
 {
@@ -181,6 +196,8 @@ QString qMokkaCoreApplication::os() const
   return QStringLiteral("unknown");
 #endif
 };
+
+// ------------------------------------------------------------------------- //
 
 void qMokkaCoreApplication::restart()
 {

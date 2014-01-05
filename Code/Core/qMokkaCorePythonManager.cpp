@@ -36,6 +36,7 @@
 #include "qMokkaCorePythonManager.h"
 
 #include "qMokkaCoreApplication.h"
+#include "qMokkaCoreDataManager.h"
 
 #include <PythonQt.h>
 
@@ -71,5 +72,8 @@ void qMokkaCorePythonManager::preInitialization()
   this->ctkAbstractPythonManager::preInitialization();
   qMokkaCoreApplication* app = qMokkaCoreApplication::application();
   if (app != 0)
+  {
     this->addObjectToPythonMain(QStringLiteral("_qMokkaCoreApplicationInstance"), app);
+    this->addObjectToPythonMain(QStringLiteral("_qMokkaCoreDataManagerInstance"), app->dataManager());
+  }
 };

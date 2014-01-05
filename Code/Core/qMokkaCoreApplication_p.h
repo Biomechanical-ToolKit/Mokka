@@ -54,7 +54,8 @@ public:
   // CorePythonManager - It should exist only one instance of the CorePythonManager
   QSharedPointer<qMokkaCorePythonManager> CorePythonManager;
 #endif
-
+  QSharedPointer<qMokkaCoreDataManager> CoreDataManager;
+  
 protected:
   qMokkaCoreApplication* q_ptr;
 };
