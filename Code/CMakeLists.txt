@@ -33,7 +33,6 @@ SET(Mokka_CPP
   qMokkaApplication.cpp
   # Core
   Core/qMokkaCoreApplication.cpp
-  Core/qMokkaCorePythonManager.cpp
   )
   
 SET(Mokka_H
@@ -46,6 +45,7 @@ IF(MOKKA_USE_PYTHON)
   INCLUDE_DIRECTORIES("${MOKKA_SOURCE_DIR}/Utilities/CTKConsoleWidget")
   SET(Mokka_CPP
     ${Mokka_CPP}
+    Core/qMokkaCorePythonManager.cpp
     Python/qMokkaPythonManager.cpp
     Python/qMokkaPythonConsole.cpp
     ../Utilities/CTKConsoleWidget/ctkConsole.cpp
