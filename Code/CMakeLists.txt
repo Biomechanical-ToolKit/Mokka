@@ -30,14 +30,18 @@ INCLUDE_DIRECTORIES(
 
 SET(Mokka_CPP
   main.cpp
+  qMokkaDataManager.cpp
   qMokkaApplication.cpp
   # Core
   Core/qMokkaCoreApplication.cpp
+  Core/qMokkaCoreDataManager.cpp
   )
   
 SET(Mokka_H
+  qMokkaDataManager.h
   qMokkaApplication.h
   # Core
+  Core/qMokkaCoreDataManager.h
   Core/qMokkaCoreApplication.h
   )
 
