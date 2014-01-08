@@ -38,17 +38,24 @@
 
 #include <QObject>
 #include <QScopedPointer>
+#include <QVariantList>
+
+class qMokkaAcquisition;
 
 class qMokkaCoreDataManagerPrivate;
 
 class qMokkaCoreDataManager : public QObject
 {
   Q_OBJECT
-    
+  
+  Q_PROPERTY(QVariantList acquisitions READ variantAcquisitions)
+      
 public:
   virtual ~qMokkaCoreDataManager();
   
-public slots:
+  void appendAcquisition(qMokkaAcquisition* ptr);
+  
+  const QList<qMokkaAcquisition*>& acquisitions() const;
   
 protected:
   qMokkaCoreDataManager(QObject* parent);
@@ -58,6 +65,8 @@ protected:
 private:
   Q_DISABLE_COPY(qMokkaCoreDataManager);
   Q_DECLARE_PRIVATE(qMokkaCoreDataManager);
+  
+  QVariantList variantAcquisitions() const;
 };
 
 #endif // __qMokkaCoreDataManager_h

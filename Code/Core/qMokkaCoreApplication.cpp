@@ -40,6 +40,7 @@
   #include <PythonQt.h>
 #endif
 #include "qMokkaCoreDataManager.h"
+#include "qMokkaAcquisition.h"
 
 #include <QProcess>
 
@@ -204,4 +205,13 @@ void qMokkaCoreApplication::restart()
   qMokkaCoreApplication* app = qMokkaCoreApplication::application();
   QProcess::startDetached(app->applicationFilePath(), app->arguments());
   QCoreApplication::quit();
+};
+
+qMokkaAcquisition* qMokkaCoreApplication::openAcquisition(const QString& filename)
+{
+  Q_D(qMokkaCoreApplication);
+  qMokkaAcquisition* ptr = new qMokkaAcquisition;
+  ptr->setFileName(filename);
+  d->CoreDataManager->appendAcquisition(ptr);
+  return ptr;
 };

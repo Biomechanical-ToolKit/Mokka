@@ -43,6 +43,7 @@
 
 class qMokkaCorePythonManager;
 class qMokkaCoreDataManager;
+class qMokkaAcquisition;
 
 // class QSettings;
 
@@ -113,6 +114,9 @@ public:
 public slots:
   /// Restart the application with the arguments passed at startup time
   static void restart();
+
+  /// Open an acquisition an return the corresponding ID
+  qMokkaAcquisition* openAcquisition(const QString& filename);
 
 protected:
   /// Constructor which could be used by inheriting class.

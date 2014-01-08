@@ -38,6 +38,8 @@
 
 #include "qMokkaCoreDataManager.h"
 
+class qMokkaAcquisition;
+
 class qMokkaCoreDataManagerPrivate
 {
   Q_DECLARE_PUBLIC(qMokkaCoreDataManager);
@@ -45,6 +47,8 @@ class qMokkaCoreDataManagerPrivate
 public:
   qMokkaCoreDataManagerPrivate(qMokkaCoreDataManager* q);
   virtual ~qMokkaCoreDataManagerPrivate();
+  
+  QList<qMokkaAcquisition*> acquisitions;
   
 protected:
   qMokkaCoreDataManager* q_ptr;

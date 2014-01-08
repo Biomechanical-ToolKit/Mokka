@@ -36,16 +36,25 @@
 #include "qMokkaCoreDataManager.h"
 #include "qMokkaCoreDataManager_p.h"
 
+#include "qMokkaAcquisition.h"
+
 // ------------------------------------------------------------------------- //
 //                      qMokkaCoreDataManagerPrivate                  //
 // ------------------------------------------------------------------------- //
 
 qMokkaCoreDataManagerPrivate::qMokkaCoreDataManagerPrivate(qMokkaCoreDataManager* q)
-: q_ptr(q)
+: q_ptr(q), acquisitions()
 {};
 
 qMokkaCoreDataManagerPrivate::~qMokkaCoreDataManagerPrivate()
-{};
+{
+  QList<qMokkaAcquisition*>::iterator itA = this->acquisitions.begin();
+  while (itA != this->acquisitions.end())
+  {
+    delete *itA;
+    itA = this->acquisitions.erase(itA);
+  }
+};
 
 // ------------------------------------------------------------------------- //
 //                         qMokkaCoreDataManager                      //
@@ -58,3 +67,33 @@ qMokkaCoreDataManager::qMokkaCoreDataManager(QObject* parent)
 
 qMokkaCoreDataManager::~qMokkaCoreDataManager()
 {};
+
+const QList<qMokkaAcquisition*>& qMokkaCoreDataManager::acquisitions() const
+{
+  Q_D(const qMokkaCoreDataManager);
+  return d->acquisitions;
+};
+
+void qMokkaCoreDataManager::appendAcquisition(qMokkaAcquisition* ptr)
+{
+  Q_D(qMokkaCoreDataManager);
+  for (QList<qMokkaAcquisition*>::iterator itA = d->acquisitions.begin() ; itA != d->acquisitions.end() ; ++itA)
+  {
+    if (*itA == ptr)
+    {
+      qWarning("Acqusition already in the list!");
+      return;
+    }
+  }
+  d->acquisitions.append(ptr);
+};
+
+QVariantList qMokkaCoreDataManager::variantAcquisitions() const
+{
+  Q_D(const qMokkaCoreDataManager);
+  QVariantList list;
+  for (QList<qMokkaAcquisition*>::const_iterator itA = d->acquisitions.begin() ; itA != d->acquisitions.end() ; ++itA)
+    // NOTE: Even if downcasted to a QObject pointer, PythonQt will correctly convert the QVariantList as a QList<qMokkaAcquisition*>.
+    list.append(QVariant::fromValue(static_cast<QObject*>(*itA)));
+  return list;
+};
