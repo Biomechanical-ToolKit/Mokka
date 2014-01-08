@@ -18,6 +18,7 @@ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/qMokkaConfigure.h.in
 
 INCLUDE_DIRECTORIES(
         "${CMAKE_CURRENT_SOURCE_DIR}/Core"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Data"
         "${CMAKE_CURRENT_SOURCE_DIR}/Python"
         "${CMAKE_CURRENT_SOURCE_DIR}/UI"
         "${MOKKA_SOURCE_DIR}/Utilities/ParserCmdLine"
@@ -35,6 +36,8 @@ SET(Mokka_CPP
   # Core
   Core/qMokkaCoreApplication.cpp
   Core/qMokkaCoreDataManager.cpp
+  # Data
+  Data/qMokkaAcquisition.cpp
   )
   
 SET(Mokka_H
@@ -43,6 +46,9 @@ SET(Mokka_H
   # Core
   Core/qMokkaCoreDataManager.h
   Core/qMokkaCoreApplication.h
+  # Data
+  Data/qMokkaAcquisition.h
+  Data/qMokkaDataDecorators.h
   )
 
 IF(MOKKA_USE_PYTHON)  
