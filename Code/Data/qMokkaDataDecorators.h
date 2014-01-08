@@ -33,51 +33,27 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "qMokkaCorePythonManager.h"
+#ifndef __qMokkaDataDecorators_h
+#define __qMokkaDataDecorators_h
 
-#include "qMokkaCoreApplication.h"
-#include "qMokkaCoreDataManager.h"
+#include "qMokkaAcquisition.h"
 
-#include "qMokkaDataDecorators.h"
+#include <QObject>
 
 #include <PythonQt.h>
 
-qMokkaCorePythonManager::qMokkaCorePythonManager(QObject* parent)
-: ctkAbstractPythonManager(parent)
+class qMokkaDataDecorators : public QObject
 {
-  int flags = this->initializationFlags();
-  flags &= ~(PythonQt::IgnoreSiteModule); // Clear bit
-  this->setInitializationFlags(flags);
-};
-
-void qMokkaCorePythonManager::appendPythonPath(const QString& path)
-{
-  // TODO Make sure PYTHONPATH is updated
-  this->executeString(QString("import sys; sys.path.append('%1'); del sys").arg(path));
-};
-
-void qMokkaCorePythonManager::appendPythonPaths(const QStringList& paths)
-{
-  foreach(const QString& path, paths)
-    this->appendPythonPath(path);
-};
-
-QStringList qMokkaCorePythonManager::pythonPaths()
-{
-  QStringList paths;
-  paths << this->ctkAbstractPythonManager::pythonPaths();
-  return paths;
-};
-
-void qMokkaCorePythonManager::preInitialization()
-{
-  this->ctkAbstractPythonManager::preInitialization();
-  
-  qMokkaCoreApplication* app = qMokkaCoreApplication::application();
-  if (app != 0)
+  Q_OBJECT
+    
+public:
+  qMokkaDataDecorators()
   {
-    this->registerPythonQtDecorator(new qMokkaDataDecorators);
-    this->addObjectToPythonMain(QStringLiteral("_qMokkaCoreApplicationInstance"), app);
-    this->addObjectToPythonMain(QStringLiteral("_qMokkaCoreDataManagerInstance"), app->dataManager());
-  }
+    PythonQt::self()->registerClass(&qMokkaAcquisition::staticMetaObject);
+  };
+  
+public slots:
+  // qMokkaAcquisition* new_qMokkaAcquisition() {return new qMokkaAcquisition();};
 };
+
+#endif // __qMokkaDataDecorators_h
