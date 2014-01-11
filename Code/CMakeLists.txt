@@ -38,6 +38,9 @@ SET(Mokka_CPP
   Core/qMokkaCoreDataManager.cpp
   # Data
   Data/qMokkaAcquisition.cpp
+  Data/qMokkaAnalog.cpp
+  Data/qMokkaEvent.cpp
+  Data/qMokkaPoint.cpp
   )
   
 SET(Mokka_H
@@ -49,6 +52,9 @@ SET(Mokka_H
   # Data
   Data/qMokkaAcquisition.h
   Data/qMokkaDataDecorators.h
+  Data/qMokkaAnalog.h
+  Data/qMokkaEvent.h
+  Data/qMokkaPoint.h
   )
 
 IF(MOKKA_USE_PYTHON)  
