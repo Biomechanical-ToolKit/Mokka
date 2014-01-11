@@ -92,8 +92,8 @@ QVariantList qMokkaCoreDataManager::variantAcquisitions() const
 {
   Q_D(const qMokkaCoreDataManager);
   QVariantList list;
+  // NOTE: Even if downcasted to a QObject pointer, PythonQt will correctly convert the QVariantList as a QList<qMokkaAcquisition*>.  
   for (QList<qMokkaAcquisition*>::const_iterator itA = d->acquisitions.begin() ; itA != d->acquisitions.end() ; ++itA)
-    // NOTE: Even if downcasted to a QObject pointer, PythonQt will correctly convert the QVariantList as a QList<qMokkaAcquisition*>.
     list.append(QVariant::fromValue(static_cast<QObject*>(*itA)));
   return list;
 };

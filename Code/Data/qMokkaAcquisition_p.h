@@ -38,6 +38,10 @@
 
 #include "qMokkaAcquisition.h"
 
+class qMokkaPoint;
+class qMokkaAnalog;
+class qMokkaEvent;
+
 class qMokkaAcquisitionPrivate
 {
   Q_DECLARE_PUBLIC(qMokkaAcquisition);
@@ -47,6 +51,9 @@ public:
   ~qMokkaAcquisitionPrivate();
   
   QString filename;
+  QList<qMokkaPoint*> points;
+  QList<qMokkaAnalog*> analogs;
+  QList<qMokkaEvent*> events;
   
 private:
   qMokkaAcquisition* q_ptr;

@@ -37,6 +37,9 @@
 #define __qMokkaDataDecorators_h
 
 #include "qMokkaAcquisition.h"
+#include "qMokkaPoint.h"
+#include "qMokkaAnalog.h"
+#include "qMokkaEvent.h"
 
 #include <QObject>
 
@@ -50,6 +53,9 @@ public:
   qMokkaDataDecorators()
   {
     PythonQt::self()->registerClass(&qMokkaAcquisition::staticMetaObject);
+    PythonQt::self()->registerClass(&qMokkaPoint::staticMetaObject);
+    PythonQt::self()->registerClass(&qMokkaAnalog::staticMetaObject);
+    PythonQt::self()->registerClass(&qMokkaEvent::staticMetaObject);
   };
   
 public slots:

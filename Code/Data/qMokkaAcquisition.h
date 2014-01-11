@@ -38,6 +38,10 @@
 
 #include <QObject>
 #include <QScopedPointer>
+#include <QVariantMap>
+#include <QVariantList>
+
+class qMokkaPoint;
 
 class qMokkaAcquisitionPrivate;
 
@@ -46,6 +50,9 @@ class qMokkaAcquisition : public QObject
   Q_OBJECT
   
   Q_PROPERTY(QString fileName READ fileName WRITE setFileName)
+  Q_PROPERTY(QVariantMap points READ variantPoints)
+  Q_PROPERTY(QVariantMap analogs READ variantAnalogs)
+  Q_PROPERTY(QVariantList events READ variantEvents)
     
 public:
   qMokkaAcquisition(QObject* parent = 0);
@@ -57,9 +64,15 @@ public:
   int frameNumber() const;
   void setFrameNumber(int num);
   
+  void appendPoint(qMokkaPoint* p);
+  
 private:
   Q_DECLARE_PRIVATE(qMokkaAcquisition);
   Q_DISABLE_COPY(qMokkaAcquisition);
+  
+  QVariantMap variantPoints() const;
+  QVariantMap variantAnalogs() const;
+  QVariantList variantEvents() const;
   
   const QScopedPointer<qMokkaAcquisitionPrivate> d_ptr;
 };

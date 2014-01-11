@@ -41,6 +41,7 @@
 #endif
 #include "qMokkaCoreDataManager.h"
 #include "qMokkaAcquisition.h"
+#include "qMokkaPoint.h"
 
 #include <QProcess>
 
@@ -210,8 +211,10 @@ void qMokkaCoreApplication::restart()
 qMokkaAcquisition* qMokkaCoreApplication::openAcquisition(const QString& filename)
 {
   Q_D(qMokkaCoreApplication);
-  qMokkaAcquisition* ptr = new qMokkaAcquisition;
-  ptr->setFileName(filename);
-  d->CoreDataManager->appendAcquisition(ptr);
-  return ptr;
+  qMokkaAcquisition* acq = new qMokkaAcquisition;
+  acq->setFileName(filename);
+  qMokkaPoint* p = new qMokkaPoint;
+  acq->appendPoint(p);
+  d->CoreDataManager->appendAcquisition(acq);
+  return acq;
 };
