@@ -206,3 +206,12 @@ QVariantMap qMokkaAcquisition::variantIMUs() const
     map.insert((*itI)->label(), QVariant::fromValue(static_cast<QObject*>(*itI)));
   return map;
 };
+
+QVariantList qMokkaAcquisition::variantVideos() const
+{
+  Q_D(const qMokkaAcquisition);
+  QVariantList list;
+  for (QList<qMokkaVideo*>::const_iterator itV = d->videos.begin() ; itV != d->videos.end() ; ++itV)
+    list.append(QVariant::fromValue(static_cast<QObject*>(*itV)));
+  return list;
+};

@@ -79,6 +79,7 @@ private:
   QVariantList variantEvents() const;
   QVariantMap variantForcePlates() const;
   QVariantMap variantIMUs() const;
+  QVariantList variantVideos() const;
   
   const QScopedPointer<qMokkaAcquisitionPrivate> d_ptr;
 };

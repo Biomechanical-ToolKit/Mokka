@@ -42,6 +42,7 @@
 #include "qMokkaEvent.h"
 #include "qMokkaForcePlate.h"
 #include "qMokkaIMU.h"
+#include "qMokkaVideo.h"
 
 #include <QObject>
 
@@ -60,6 +61,7 @@ public:
     PythonQt::self()->registerClass(&qMokkaEvent::staticMetaObject);
     PythonQt::self()->registerClass(&qMokkaForcePlate::staticMetaObject);
     PythonQt::self()->registerClass(&qMokkaIMU::staticMetaObject);
+    PythonQt::self()->registerClass(&qMokkaVideo::staticMetaObject);
   };
   
 public slots:
