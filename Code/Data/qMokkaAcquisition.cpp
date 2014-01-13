@@ -38,6 +38,8 @@
 #include "qMokkaPoint.h"
 #include "qMokkaAnalog.h"
 #include "qMokkaEvent.h"
+#include "qMokkaForcePlate.h"
+#include "qMokkaIMU.h"
 
 // ------------------------------------------------------------------------- //
 //                            qMokkaAcquisitionPrivate                       //
@@ -45,29 +47,59 @@
 
 qMokkaAcquisitionPrivate::qMokkaAcquisitionPrivate(qMokkaAcquisition* q)
 : q_ptr(q),
-  filename(), points(), analogs(), events()
+  filename(), points(), analogs(), events(), forceplates(), imus(),
 {};
 
 qMokkaAcquisitionPrivate::~qMokkaAcquisitionPrivate()
 {
+  this->clear();
+};
+
+void qMokkaAcquisitionPrivate::clear()
+{
+  // Points
   QList<qMokkaPoint*>::iterator itP = this->points.begin();
   while (itP != this->points.end())
   {
     delete *itP;
     itP = this->points.erase(itP);
   }
+  this->points.clear();
+  // Analogs
   QList<qMokkaAnalog*>::iterator itA = this->analogs.begin();
   while (itA != this->analogs.end())
   {
     delete *itA;
     itA = this->analogs.erase(itA);
   }
+  this->analogs.clear();
+  // Events
   QList<qMokkaEvent*>::iterator itE = this->events.begin();
   while (itE != this->events.end())
   {
     delete *itE;
     itE = this->events.erase(itE);
   }
+  this->events.clear();
+  // Force platforms
+  QList<qMokkaForcePlate*>::iterator itFP = this->forceplates.begin();
+  while (itFP != this->forceplates.end())
+  {
+    delete *itFP;
+    itFP = this->forceplates.erase(itFP);
+  }
+  this->forceplates.clear();
+  // IMUs
+  QList<qMokkaIMU*>::iterator itI = this->imus.begin();
+  while (itI != this->imus.end())
+  {
+    delete *itI;
+    itI = this->imus.erase(itI);
+  }
+  this->imus.clear();
+  // Other memmbers
+  this->filename.clear();
+  this->btk_ptr.reset();
 };
 
 // ------------------------------------------------------------------------- //
@@ -144,4 +176,22 @@ QVariantList qMokkaAcquisition::variantEvents() const
   for (QList<qMokkaEvent*>::const_iterator itE = d->events.begin() ; itE != d->events.end() ; ++itE)
     list.append(QVariant::fromValue(static_cast<QObject*>(*itE)));
   return list;
+};
+
+QVariantMap qMokkaAcquisition::variantForcePlates() const
+{
+  Q_D(const qMokkaAcquisition);
+  QVariantMap map;
+  for (QList<qMokkaForcePlate*>::const_iterator itFP = d->forceplates.begin() ; itFP != d->forceplates.end() ; ++itFP)
+    map.insert((*itFP)->label(), QVariant::fromValue(static_cast<QObject*>(*itFP)));
+  return map;
+};
+
+QVariantMap qMokkaAcquisition::variantIMUs() const
+{
+  Q_D(const qMokkaAcquisition);
+  QVariantMap map;
+  for (QList<qMokkaIMU*>::const_iterator itI = d->imus.begin() ; itI != d->imus.end() ; ++itI)
+    map.insert((*itI)->label(), QVariant::fromValue(static_cast<QObject*>(*itI)));
+  return map;
 };

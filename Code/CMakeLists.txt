@@ -41,6 +41,8 @@ SET(Mokka_CPP
   Data/qMokkaAnalog.cpp
   Data/qMokkaEvent.cpp
   Data/qMokkaPoint.cpp
+  Data/qMokkaForcePlate.cpp
+  Data/qMokkaIMU.cpp
   )
   
 SET(Mokka_H
@@ -55,6 +57,8 @@ SET(Mokka_H
   Data/qMokkaAnalog.h
   Data/qMokkaEvent.h
   Data/qMokkaPoint.h
+  Data/qMokkaForcePlate.h
+  Data/qMokkaIMU.h
   )
 
 IF(MOKKA_USE_PYTHON)  

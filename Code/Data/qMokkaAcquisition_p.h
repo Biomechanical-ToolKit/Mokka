@@ -41,6 +41,8 @@
 class qMokkaPoint;
 class qMokkaAnalog;
 class qMokkaEvent;
+class qMokkaForcePlate;
+class qMokkaIMU;
 
 class qMokkaAcquisitionPrivate
 {
@@ -50,10 +52,14 @@ public:
   qMokkaAcquisitionPrivate(qMokkaAcquisition* q);
   ~qMokkaAcquisitionPrivate();
   
+  void clear();
+  
   QString filename;
   QList<qMokkaPoint*> points;
   QList<qMokkaAnalog*> analogs;
   QList<qMokkaEvent*> events;
+  QList<qMokkaForcePlate*> forceplates;
+  QList<qMokkaIMU*> imus;
   
 private:
   qMokkaAcquisition* q_ptr;

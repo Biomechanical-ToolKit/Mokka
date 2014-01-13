@@ -56,6 +56,8 @@ public:
     PythonQt::self()->registerClass(&qMokkaPoint::staticMetaObject);
     PythonQt::self()->registerClass(&qMokkaAnalog::staticMetaObject);
     PythonQt::self()->registerClass(&qMokkaEvent::staticMetaObject);
+    PythonQt::self()->registerClass(&qMokkaForcePlate::staticMetaObject);
+    PythonQt::self()->registerClass(&qMokkaIMU::staticMetaObject);
   };
   
 public slots:

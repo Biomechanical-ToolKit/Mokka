@@ -53,6 +53,8 @@ class qMokkaAcquisition : public QObject
   Q_PROPERTY(QVariantMap points READ variantPoints)
   Q_PROPERTY(QVariantMap analogs READ variantAnalogs)
   Q_PROPERTY(QVariantList events READ variantEvents)
+  Q_PROPERTY(QVariantMap forceplates READ variantForcePlates)
+  Q_PROPERTY(QVariantMap imus READ variantIMUs)
     
 public:
   qMokkaAcquisition(QObject* parent = 0);
@@ -65,6 +67,8 @@ public:
   void setFrameNumber(int num);
   
   void appendPoint(qMokkaPoint* p);
+public slots:
+  void clear();
   
 private:
   Q_DECLARE_PRIVATE(qMokkaAcquisition);
@@ -73,6 +77,8 @@ private:
   QVariantMap variantPoints() const;
   QVariantMap variantAnalogs() const;
   QVariantList variantEvents() const;
+  QVariantMap variantForcePlates() const;
+  QVariantMap variantIMUs() const;
   
   const QScopedPointer<qMokkaAcquisitionPrivate> d_ptr;
 };
