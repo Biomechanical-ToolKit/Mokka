@@ -40,6 +40,9 @@
 #include "qMokkaEvent.h"
 #include "qMokkaForcePlate.h"
 #include "qMokkaIMU.h"
+#include "qMokkaVideo.h"
+
+#include <btkAcquisitionFileReader.h>
 
 // ------------------------------------------------------------------------- //
 //                            qMokkaAcquisitionPrivate                       //
@@ -47,7 +50,7 @@
 
 qMokkaAcquisitionPrivate::qMokkaAcquisitionPrivate(qMokkaAcquisition* q)
 : q_ptr(q),
-  filename(), points(), analogs(), events(), forceplates(), imus(),
+  filename(), points(), analogs(), events(), forceplates(), imus(), videos()
 {};
 
 qMokkaAcquisitionPrivate::~qMokkaAcquisitionPrivate()
@@ -97,6 +100,14 @@ void qMokkaAcquisitionPrivate::clear()
     itI = this->imus.erase(itI);
   }
   this->imus.clear();
+  // Videos
+  QList<qMokkaVideo*>::iterator itV = this->videos.begin();
+  while (itV != this->videos.end())
+  {
+    delete *itV;
+    itV = this->videos.erase(itV);
+  }
+  this->videos.clear();
   // Other memmbers
   this->filename.clear();
   this->btk_ptr.reset();

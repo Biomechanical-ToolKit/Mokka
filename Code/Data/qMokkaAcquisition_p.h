@@ -43,6 +43,7 @@ class qMokkaAnalog;
 class qMokkaEvent;
 class qMokkaForcePlate;
 class qMokkaIMU;
+class qMokkaVideo;
 
 class qMokkaAcquisitionPrivate
 {
@@ -60,6 +61,7 @@ public:
   QList<qMokkaEvent*> events;
   QList<qMokkaForcePlate*> forceplates;
   QList<qMokkaIMU*> imus;
+  QList<qMokkaVideo*> videos;
   
 private:
   qMokkaAcquisition* q_ptr;
