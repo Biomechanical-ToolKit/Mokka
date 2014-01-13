@@ -40,6 +40,8 @@
 #include "qMokkaPoint.h"
 #include "qMokkaAnalog.h"
 #include "qMokkaEvent.h"
+#include "qMokkaForcePlate.h"
+#include "qMokkaIMU.h"
 
 #include <QObject>
 
